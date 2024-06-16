@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import logo from "../../assets/images/logo.png";
-import userImg from "../../assets/images/avatar-icon.png";
 import { BiMenu } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
+import { authContext } from "../../../context/authContext";
 
 const navLinks = [
   {
@@ -26,6 +26,7 @@ const navLinks = [
 const Header = () => {
   const headerRef = useRef();
   const menuRef = useRef();
+  const { user, role, token } = useContext(authContext);
 
   const handleStickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -39,7 +40,8 @@ const Header = () => {
       }
     });
   };
-
+  
+  console.log(user);
   useEffect(() => {
     handleStickyHeader();
     return () => window.removeEventListener("scroll", handleStickyHeader);
@@ -75,21 +77,26 @@ const Header = () => {
             </ul>
           </div>
           <div className="flex items-center gap-4 ">
-            <div>
-              <Link to="/">
+            {token && user ? (
+              <Link
+                to={`${
+                  role === "doctor" ? "/doctors/profile/me" : "/users/profile/me"
+                }`}
+              >
                 <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                  <img src={userImg} className="w-full rounded-full " />
+                  <img src={user?.photo} className="w-full rounded-full " />
                 </figure>
               </Link>
-            </div>
-            <Link to="/login">
-              <button
-                className="bg-primaryColor py-2 px-6 text-white font-semibold
+            ) : (
+              <Link to="/login">
+                <button
+                  className="bg-primaryColor py-2 px-6 text-white font-semibold
              h-[44px] flex items-center rounded-[500px]"
-              >
-                Login
-              </button>
-            </Link>
+                >
+                  Login
+                </button>
+              </Link>
+            )}
 
             <span className="md:hidden" onClick={toggleMenu}>
               <BiMenu className="w-6 h-6 cursor-pointer" />

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import signupImg from '../assets/images/signup.gif'
+import { Link, useNavigate } from "react-router-dom";
+import signupImg from "../assets/images/signup.gif";
+import uploadImageToCloudinary from "../utils/uploadCloudinary";
+import { BASE_URL } from "../../config.js";
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader.js";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState("");
@@ -14,22 +19,43 @@ const Signup = () => {
     gender: "",
     role: "patient",
   });
+
   const handleInputChange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleFileInputChange = async (event) => {
     const file = event.target.files[0];
     const data = await uploadImageToCloudinary(file);
-    console.log(data);
     setPreviewURL(data.url);
     setSelectedFile(data.url);
     setformData({ ...formData, photo: data.url });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(formData);
-  }
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log(res);
+      const { message } = await res.json();
+      if (!res.ok) {
+        throw new Error(message);
+      }
+      setLoading(false);
+      toast.success(message);
+      navigate("/login");
+    } catch (err) {
+      toast.error(err.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="px-5 xl:px-0">
@@ -56,7 +82,7 @@ const Signup = () => {
           border-[#0066ff61] focus:outline-none
           focus:border-b-primaryColor text-[16px] leading-7
           text-headingColor placeholder:text-textColor 
-           cursor-pointer"
+           "
                 />
               </div>
               <div className="mb-5">
@@ -70,7 +96,7 @@ const Signup = () => {
           border-[#0066ff61] focus:outline-none
           focus:border-b-primaryColor text-[16px] leading-7
           text-headingColor placeholder:text-textColor 
-           cursor-pointer"
+           "
                 />{" "}
               </div>
               <div className="mb-5">
@@ -84,7 +110,7 @@ const Signup = () => {
           border-[#0066ff61] focus:outline-none
           focus:border-b-primaryColor text-[16px] leading-7
           text-headingColor placeholder:text-textColor 
-           cursor-pointer"
+           "
                 />
               </div>
               <div className="mb-5 flex items-center justify-between">
@@ -94,7 +120,7 @@ const Signup = () => {
                     name="role"
                     onChange={handleInputChange}
                     value={formData.role}
-                    className="text-textColor font-semibold text-[15px] leading-7 px-4  py-3 focus:outline-none"
+                    className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
                   >
                     <option value="patient">Patient</option>
                     <option value="doctor">Doctor</option>
@@ -138,7 +164,7 @@ const Signup = () => {
                     id="customFile"
                     onChange={handleFileInputChange}
                     accept=".jpg, .png , .jpeg"
-                    className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                    className="absolute top-0 left-0 w-full h-full opacity-0 "
                   />
                   <label
                     htmlFor="customFile"
@@ -157,7 +183,7 @@ const Signup = () => {
                   className="w-full bg-primaryColor text-white text-[18px] 
           leading-[30px] rounded-lg py-1"
                 >
-                  Sign Up
+                  {loading ? <HashLoader size={35} color="#fff" /> : "Sign Up"}
                 </button>
               </div>
               <p className="mt-5 text-textColor text-center">

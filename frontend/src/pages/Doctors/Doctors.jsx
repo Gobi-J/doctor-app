@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
-import { doctors } from "../../assets/data/doctors";
 import DoctorCard from "../../components/Doctors/DoctorCard";
 import Testimonial from "../../components/Testimonial/Testimonial";
+import useFetchData from "../../hooks/useFetchData";
+import { BASE_URL } from "../../../config";
+import Loader from "../../components/Loader/Loading";
+import Error from "../../components/Error/Error";
 
 const Doctors = () => {
-  const [query, setQuery] = useState("");
-  const [newDoc, setNewDoc] = useState(doctors);
+    
+    const [query, setQuery] = useState("");
+    const [debounceQuery, setDebounceQuery] = useState("");
+
+    const { data: doctors, loading, error } = useFetchData(`${BASE_URL}/doctors?query=${debounceQuery}`);
 
   const handleSearch = () => {
     setQuery(query.trim());
   };
 
   useEffect(() => {
-    console.log(query);
-    if (query === "") {
-      setNewDoc(doctors);
-      return;
-    }
-    const newD = doctors.filter(
-      (doc) =>
-        doc.name.toLowerCase().includes(query.toLowerCase()) ||
-        doc.specialization.toLowerCase().includes(query.toLowerCase())
-    );
-    setNewDoc(newD);
+    const timeout = setTimeout(() => {
+      setDebounceQuery(query);
+    }, 700);
+    return () => clearTimeout(timeout);
   }, [query]);
 
   return (
@@ -33,7 +32,7 @@ const Doctors = () => {
           <div className="max-w-[570px] mt-[30px] mx-auto bg-[#0066ff2c] rounded-md flex items-center justify-between">
             <input
               type="search"
-              className="py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none cursor-pointer placeholder:text-textColor"
+              className="py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none placeholder:text-textColor"
               placeholder="Search doctor by name or specifiication"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -42,23 +41,27 @@ const Doctors = () => {
               className="btn mt-0 rounded-[0px] rounded-r-md"
               onClick={handleSearch}
             >
-              Search
+              Search by name or specialization
             </button>
           </div>
         </div>
       </section>
-      <section>
-        <div className="container">
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+      {loading && <Loader />}
+      {error && <Error error={error.message} />}
+      {!loading && !error && (
+        <section>
+          <div className="container">
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
     gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]"
-          >
-            {newDoc.map((doctor) => (
-              <DoctorCard key={doctor.id} doctor={doctor} />
-            ))}
+            >
+              {doctors.map((doctor) => (
+                <DoctorCard key={doctor._id} doctor={doctor} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">

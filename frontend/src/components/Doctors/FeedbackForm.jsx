@@ -1,45 +1,46 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
-// import { BASE_URL,token } from "../../../config";
+import { BASE_URL, token } from "../../../config";
 // import HashLoader from "react-spinners/HashLoader";
 import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 
 const FeedbackForm = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [reviewText, setReviewText] = useState("");
-  // const handleSubmitReview=async e =>{
-  //     e.preventDefault();
-  //     setLoading(true);
-  //     try {
-  //         if(!rating|| !reviewText){
-  //             setLoading(false);
-  //             return toast.error("Rating & review fields are required ");
-  //         }
-  //         const res=await fetch(`${BASE_URL}/doctors/${id}/reviews`,{
-  //             method:"POST",
-  //             headers:{
-  //                 'Content-Type':'application/json',
-  //                 Authorization:`Bearer ${token}`
-  //             },
-  //             body:JSON.stringify({rating,reviewText})
-  //         })
-  //         const result=await res.json();
-  //         if(!res.ok){
-  //             throw new Error(result.message)
-  //         }
-  //         setLoading(false)
-  //         toast.success(result.message)
-  //     } catch (error) {
-  //         setLoading(false)
-  //         toast.error(error)
-  //     }
-  // }
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+
   const handleSubmitReview = async (e) => {
-    e.preventDefault()
-    console.log("Feedback submitted");
+    e.preventDefault();
+    setLoading(true);
+    try {
+      if (!rating || !reviewText) {
+        setLoading(false);
+        return toast.error("Rating & review fields are required ");
+      }
+      const res = await fetch(`${BASE_URL}/doctors/${id}/reviews`, {
+        method: "post",
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ rating, reviewText }),
+      });
+      const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.message);
+      }
+      setLoading(false);
+      toast.success(result.message);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error);
+    }
   };
+
   return (
     <form action="">
       <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4 ">
@@ -82,10 +83,15 @@ const FeedbackForm = () => {
           placeholder="Write your review"
           rows="5"
           onChange={(e) => setReviewText(e.target.value)}
+          value={reviewText}
         ></textarea>
       </div>
-      <button type="submit" className="btn"
-    onClick={handleSubmitReview}>Submit Feedback</button>
+      <button type="submit" className="btn" onClick={handleSubmitReview}>
+        {
+            loading ? <HashLoader size={35} color="#fff" /> :"Submit Feedback"
+        }
+        
+      </button>
     </form>
   );
 };
