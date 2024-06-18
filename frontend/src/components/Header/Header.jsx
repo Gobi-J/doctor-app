@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import logo from "../../assets/images/logo.png";
 import { BiMenu } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
-import { authContext } from "../../../context/authContext";
+import { authContext } from "../../context/authContext";
 
 const navLinks = [
   {
@@ -55,7 +55,7 @@ const Header = () => {
         <div className=" flex items-center justify-between">
           <div>
             <Link to={"/home"}>
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" className="w-[200px] object-contain mix-blend-multiply" />
             </Link>
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
@@ -66,8 +66,8 @@ const Header = () => {
                     to={item.path}
                     className={(navClass) =>
                       navClass.isActive
-                        ? "text-primaryColor text-[16px] font-[600] leading-7"
-                        : "text-textColor text-[16px] font-[500] leading-7 hover:text-primaryColor transition-colors"
+                        ? "text-red-600 text-[16px] font-[600] leading-7"
+                        : "text-textColor text-[16px] font-[500] leading-7 hover:text-red-600 transition-colors"
                     }
                   >
                     {item.display}
@@ -84,13 +84,13 @@ const Header = () => {
                 }`}
               >
                 <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                  <img src={user?.photo} className="w-full rounded-full " />
+                  <img src={user?.photo} className="w-full h-full rounded-full object-cover" />
                 </figure>
               </Link>
             ) : (
               <Link to="/login">
                 <button
-                  className="bg-primaryColor py-2 px-6 text-white font-semibold
+                  className="bg-red-600 py-2 px-6 text-white font-semibold
              h-[44px] flex items-center rounded-[500px]"
                 >
                   Login

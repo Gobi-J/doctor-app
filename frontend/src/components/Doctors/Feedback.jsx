@@ -19,7 +19,7 @@ const Feedback = ({reviews, totalRating}) => {
                 <img src={review.user?.photo} alt=""/>
               </figure>
               <div>
-                <h5 className='text-[16px] leading-6 text-primaryColor font-bold'>{review.user?.name}</h5>
+                <h5 className='text-[16px] leading-6 text-red-600 font-bold'>{review.user?.name}</h5>
                 <p className='text-[14px] leading-6 text-textColor'>
                   {formatDate(`${review.createdAt}`)}
                 </p>

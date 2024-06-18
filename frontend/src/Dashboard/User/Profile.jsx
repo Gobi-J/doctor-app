@@ -79,7 +79,7 @@ const Profile = ({ user }) => {
             value={formData.name}
             className="w-full  py-3 border-b border-solid
           border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor"
           />
         </div>
@@ -92,7 +92,7 @@ const Profile = ({ user }) => {
             value={formData.email}
             className="w-full  py-3 border-b border-solid
           border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor"
             aria-readonly
             readOnly
@@ -107,7 +107,7 @@ const Profile = ({ user }) => {
             value={formData.password}
             className="w-full  py-3 border-b border-solid
           border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor"
           />
         </div>
@@ -120,7 +120,7 @@ const Profile = ({ user }) => {
             value={formData.bloodType}
             className="w-full  py-3 border-b border-solid
           border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor"
           />
         </div>
@@ -144,13 +144,13 @@ const Profile = ({ user }) => {
         <div className="m-5 flex items-center gap-3">
           {formData.photo && (
             <figure
-              className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor
+              className="w-[60px] h-[60px] rounded-full border-2 border-solid border-red-600
             flex items-center justify-center"
             >
               <img
                 src={formData.photo}
                 alt=""
-                className="w-full rounded-full"
+                className="w-full rounded-full aspect-square object-cover"
               />
             </figure>
           )}
@@ -166,7 +166,7 @@ const Profile = ({ user }) => {
             <label
               htmlFor="customFile"
               className="absolute top-0 w-full left-0 h-full flex item-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden
-              bg-[#0066ff46] text-handlingColor font-semibold rounded-lg truncate cursor-pointer"
+              bg-[#f9e5e5] text-handlingColor font-semibold rounded-lg truncate cursor-pointer"
             >
               {selectedFile ? selectedFile.name : "Upload Image"}
             </label>
@@ -177,7 +177,7 @@ const Profile = ({ user }) => {
           <button
             type="submit"
             disabled={loading && true}
-            className="w-full bg-primaryColor text-white text-[20px] px-4 py-2
+            className="w-full bg-red-600 text-white text-[20px] px-4 py-2
           leading-[30px] rounded-lg"
           >
             {loading ? <HashLoader size={25} color="#ffffff" /> : "Update"}

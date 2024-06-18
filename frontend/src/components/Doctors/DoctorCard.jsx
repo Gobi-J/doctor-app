@@ -14,8 +14,8 @@ const DoctorCard = ({ doctor }) => {
   } = doctor;
 
   return (
-    <div>
-      <img src={photo} className="w-full" />
+    <div className="border rounded-xl p-5 lg:w-[350px]">
+      <img src={photo} className="w-[305px] aspect-square object-cover rounded-lg" />
       <h2
         className="text-[18px] leading-[30px] lg:text-[26px] lg:leading-9 text-headingColor
         font-[700] mt-3 lg:mt-5"
@@ -23,7 +23,7 @@ const DoctorCard = ({ doctor }) => {
         {name}
       </h2>
       <div className="mt-2 lg:mt-2 flex items-center justify-between">
-        <span className="bg-[#CCF0F3] text-irisBlueColor py-1 px-2 lg:py-2 lg:px-6 text-[12px] lg:text-[16px] font-semibold lg:leading-7 rounded">
+        <span className="bg-[#f5c0c0] text-red-700 py-1 px-2 lg:py-2 lg:px-6 text-[12px] lg:text-[16px] font-semibold lg:leading-7 rounded">
           {specialization}
         </span>
         <div className="flex items-center gap-[6px]">
@@ -44,9 +44,6 @@ const DoctorCard = ({ doctor }) => {
       </div>
       <div className="mt-[18px] lg:mt-5 flex items-center justify-between">
         <div>
-          {/* <h3 className="text-[16px] leading-7 lg:text-[18px] lg:leading-[30px] font-semibold text-headingColor">
-            +{totalPatients} Patients
-          </h3> */}
           <p className="text-[14px] leading-6 font-[400] text-textColor">
             At {experiences && experiences[0]?.hospital}
           </p>
@@ -54,10 +51,10 @@ const DoctorCard = ({ doctor }) => {
 
         <Link
           to={`/doctors/${doctor._id}`}
-          className="w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
-           justify-center group hover:bg-primaryColor hover:border-none"
+          className="w-[40px] h-[40px] rounded-full border border-solid  border-[#181A1E] flex items-center
+           justify-center group hover:bg-red-600 hover:border-none"
         >
-          <BsArrowRight className="group-hover:text-white w-6 h-5" />
+          <BsArrowRight className="group-hover:text-white w-6 h-6" />
         </Link>
       </div>
     </div>

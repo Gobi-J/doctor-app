@@ -66,7 +66,7 @@ const DoctorDetails = () => {
                 <button
                   className={`${
                     Tab == "About" &&
-                    "border-b border-solid border-primaryColor"
+                    "border-b border-solid border-red-600"
                   } py-2 px-5 mr-5 text-[16px] leading-7 text-headingColor font-semibold`}
                   onClick={() => setTab("About")}
                 >
@@ -77,7 +77,7 @@ const DoctorDetails = () => {
                   onClick={() => setTab("Feedback")}
                   className={`${
                     Tab == "Feedback" &&
-                    "border-b border-solid border-primaryColor"
+                    "border-b border-solid border-red-600"
                   } py-2 px-5 mr-5 text-[16px] leading-7 text-headingColor font-semibold`}
                 >
                   Feedback

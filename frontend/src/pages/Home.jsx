@@ -1,8 +1,11 @@
 import React from "react";
 
-import heroimg1 from "../assets/images/hero-img01.png";
-import heroimg2 from "../assets/images/hero-img02.png";
-import heroimg3 from "../assets/images/hero-img03.png";
+import heroimg1 from "../assets/images/hero-img01.jpg";
+import heroimg2 from "../assets/images/hero-img02.jpg";
+import heroimg3 from "../assets/images/hero-img03.jpg";
+import heroimg4 from "../assets/images/hero-img04.jpg";
+import heroimg5 from "../assets/images/hero-img05.jpg";
+import heroimg6 from "../assets/images/hero-img06.jpg";
 import icon1 from "../assets/images/icon01.png";
 import icon2 from "../assets/images/icon02.png";
 import icon3 from "../assets/images/icon03.png";
@@ -21,7 +24,7 @@ import Testimonial from "../components/Testimonial/Testimonial";
 const Home = () => {
   return (
     <>
-      <section className="hero__section pt-7 2xl:h-[800px] sm:pt-[60px]">
+      <section className="hero__section pt-7 2xl:h-[800px] sm:pt-[10px]">
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
             <div>
@@ -38,17 +41,17 @@ const Home = () => {
                 <button className="btn">Request an Appointment</button>
               </div>
               {/*        hero counter  */}
-              <div className="mt-[30px] lg:mt-[70px] flex flex-col md:flex-row md:items-center gap-5 md:gap-[30px]">
+              <div className="mt-[30px] flex flex-col md:flex-row md:items-center gap-5 md:gap-[30px]">
                 <div>
                   <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                    30+
+                    10+
                   </h2>
                   <span className="w-[100px] h-2 bg-yellowColor rounded-full block mt-[-14px]"></span>
                   <p className="text__para">Years of Experience</p>
                 </div>
                 <div>
                   <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                    15+
+                    20+
                   </h2>
                   <span className="w-[100px] h-2 bg-purpleColor rounded-full block mt-[-14px]"></span>
                   <p className="text__para">Clinic Location </p>
@@ -63,13 +66,14 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex gap-[30px] justify-end">
-              <div>
-                <img src={heroimg1} className="w-full" />
+            <div className="flex gap-[0px] justify-evenly">
+              <div className="w-[45%]">
+                <img src={heroimg3} className="w-[100%] aspect-square object-cover rounded-lg border" />
+                <img src={heroimg6} alt="" className="w-[90%] mt-[30px] aspect-square object-cover rounded-lg lg:ml-[30px]" />
               </div>
-              <div className="mt-[30px]">
-                <img src={heroimg2} alt="" className="w-full mb-[30px]" />
-                <img src={heroimg3} alt="" className="w-full" />
+              <div className="mt-[40px] w-[45%]">
+                <img src={heroimg5} alt="" className="w-[90%] mb-[30px] aspect-square object-cover rounded-lg" />
+                <img src={heroimg4} alt="" className="w-full aspect-square object-cover rounded-lg" />
               </div>
             </div>
           </div>
@@ -106,7 +110,7 @@ const Home = () => {
                 <Link
                   to="/doctors"
                   className="w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
-           justify-center group hover:bg-primaryColor hover:border-none duration-200"
+           justify-center group hover:bg-red-600 hover:border-none duration-200"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
                 </Link>
@@ -128,7 +132,7 @@ const Home = () => {
                 <Link
                   to="/doctors"
                   className="w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
-           justify-center group hover:bg-primaryColor hover:border-none duration-200"
+           justify-center group hover:bg-red-600 hover:border-none duration-200"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
                 </Link>
@@ -150,7 +154,7 @@ const Home = () => {
                 <Link
                   to="/doctors"
                   className="w-[44px] h-[44px] rounded-full border border-solid  border-[#181A1E]  mt-[30px] mx-auto flex items-center
-           justify-center group hover:bg-primaryColor hover:border-none duration-200"
+           justify-center group hover:bg-red-600 hover:border-none duration-200"
                 >
                   <BsArrowRight className="group-hover:text-white w-6 h-5" />
                 </Link>
@@ -253,7 +257,7 @@ const Home = () => {
 
             <div className="w-full md:w-1/2">
               <h2 className="heading">
-                Most questions by our beloved patients
+                Most questions by our beloved clients
               </h2>
               <FaqList />
             </div>
@@ -264,7 +268,7 @@ const Home = () => {
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">What our patient say?</h2>
+            <h2 className="heading text-center">What our clients say?</h2>
 
             <p className="text__para text-center">
               World-class care for everyone. Our health System offers unmatched,

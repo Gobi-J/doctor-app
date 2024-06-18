@@ -61,14 +61,14 @@ const Signup = () => {
     <section className="px-5 xl:px-0">
       <div className="max-w-[1170px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="hidden lg:block bg-primaryColor rounded-l-lg">
+          <div className="hidden lg:block bg-red-600 rounded-l-lg">
             <figure className="rounded-l-lg">
               <img src={signupImg} alt="" className="w-full rounded-l-lg" />
             </figure>
           </div>
           <div className="rounded-l-lg lg:pl-16">
             <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
-              Create an <span className="text-primaryColor">account</span>
+              Create an <span className="text-red-600">account</span>
             </h3>
             <form onSubmit={submitHandler}>
               <div className="mb-5">
@@ -79,8 +79,8 @@ const Signup = () => {
                   onChange={handleInputChange}
                   value={formData.name}
                   className="w-full  py-3 border-b border-solid
-          border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          border-[#c29999] focus:outline-none
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor 
            "
                 />
@@ -93,8 +93,8 @@ const Signup = () => {
                   onChange={handleInputChange}
                   value={formData.email}
                   className="w-full  py-3 border-b border-solid
-          border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          border-[#c29999] focus:outline-none
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor 
            "
                 />{" "}
@@ -107,8 +107,8 @@ const Signup = () => {
                   onChange={handleInputChange}
                   value={formData.password}
                   className="w-full  py-3 border-b border-solid
-          border-[#0066ff61] focus:outline-none
-          focus:border-b-primaryColor text-[16px] leading-7
+          border-[#c29999] focus:outline-none
+          focus:border-b-red-600 text-[16px] leading-7
           text-headingColor placeholder:text-textColor 
            "
                 />
@@ -147,13 +147,13 @@ const Signup = () => {
               <div className="m-5 flex items-center gap-3">
                 {selectedFile && (
                   <figure
-                    className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor
+                    className="w-[60px] h-[60px] rounded-full border-2 border-solid border-red-600
             flex items-center justify-center"
                   >
                     <img
                       src={previewURL}
                       alt=""
-                      className="w-full rounded-full"
+                      className="w-full aspect-square object-cover rounded-full"
                     />
                   </figure>
                 )}
@@ -169,7 +169,7 @@ const Signup = () => {
                   <label
                     htmlFor="customFile"
                     className="absolute top-0 w-full left-0 h-full flex items-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden
-              bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
+              bg-[#f9e5e5] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
                   >
                     Upload photo
                   </label>
@@ -180,7 +180,7 @@ const Signup = () => {
                 <button
                   type="submit"
                   disabled={loading && true}
-                  className="w-full bg-primaryColor text-white text-[18px] 
+                  className="w-full bg-red-600 text-white text-[18px] 
           leading-[30px] rounded-lg py-1"
                 >
                   {loading ? <HashLoader size={35} color="#fff" /> : "Sign Up"}
@@ -190,7 +190,7 @@ const Signup = () => {
                 Already have an acount?{" "}
                 <Link
                   to="/login"
-                  className="text-primaryColor font-medium ml-1"
+                  className="text-red-600 font-medium ml-1"
                 >
                   Login
                 </Link>

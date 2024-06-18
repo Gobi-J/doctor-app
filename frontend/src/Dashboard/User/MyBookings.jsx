@@ -17,7 +17,7 @@ const MyBookings = () => {
       {error && !loading && <Error errMesage={error} />}
 
       {!loading && !error && appointments.length == 0 && (
-        <h2 className="mt-5 text-center leading-7 text-[20px] font-semibold text-primaryColor">
+        <h2 className="mt-5 text-center leading-7 text-[20px] font-semibold text-red-600">
           You did not have any appointments
         </h2>
       )}

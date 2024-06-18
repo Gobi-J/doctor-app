@@ -400,8 +400,7 @@ const Profile = ({ doctorData }) => {
                       name="day"
                       value={Item.day}
                       onChange={(e) => handleTimeSlotChange(e, index)}
-                      className="form__input 
-                         py-3.5"
+                      className="form__input"
                     >
                       <option value="">Select</option>
                       <option value="saturday">Saturday</option>
@@ -415,7 +414,7 @@ const Profile = ({ doctorData }) => {
                   </div>
 
                   <div>
-                    <p className="form__labe">Starting Time*</p>
+                    <p className="form__label">Starting Time*</p>
                     <input
                       type="time"
                       name="startingTime"
@@ -425,7 +424,7 @@ const Profile = ({ doctorData }) => {
                     />
                   </div>
                   <div>
-                    <p className="form__labe">Ending Time*</p>
+                    <p className="form__label">Ending Time*</p>
                     <input
                       type="time"
                       name="endingTime"
@@ -471,13 +470,13 @@ const Profile = ({ doctorData }) => {
         <div className="mb-5 flex items-center gap-3">
           {formData.photo && (
             <figure
-              className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor
+              className="w-[60px] h-[60px] rounded-full border-2 border-solid border-red-600
             flex items-center justify-center"
             >
               <img
                 src={formData.photo}
                 alt=""
-                className="w-full rounded-full"
+                className="w-full rounded-full object-cover"
               />
             </figure>
           )}
@@ -493,7 +492,7 @@ const Profile = ({ doctorData }) => {
             <label
               htmlFor="customFile"
               className="absolute top-0 w-full left-0 h-full flex item-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden
-              bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
+              bg-[#f9e5e5] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
             >
               Upload photo
             </label>
@@ -504,7 +503,7 @@ const Profile = ({ doctorData }) => {
           <button
             type="submit"
             onClick={updateProfileHandler}
-            className="bg-primaryColor text-white text-[18px] leading-[30px] w-full py-3 px-4 rounded-lg"
+            className="bg-red-600 text-white text-[18px] leading-[30px] w-full py-3 px-4 rounded-lg"
           >
             Update profile
           </button>

@@ -22,7 +22,7 @@ const FaqItem = ({ item }) => {
         </div>
       </div>
       <div
-        className={`transition-all duration-200 ${
+        className={`transition-all ${
           isOpen ? "mt-2 h-[fit-content]" : "overflow-clip h-0"
         }`}
       >

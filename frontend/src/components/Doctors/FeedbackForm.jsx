@@ -79,7 +79,7 @@ const FeedbackForm = () => {
           Share your feedback or suggestions*
         </h3>
         <textarea
-          className="border border-solid border-[#0066ff34] focus:outline outline-primaryColor w-full px-4 py-3 rounded-md "
+          className="border border-solid border-[#0066ff34] focus:outline outline-red-600 w-full px-4 py-3 rounded-md "
           placeholder="Write your review"
           rows="5"
           onChange={(e) => setReviewText(e.target.value)}

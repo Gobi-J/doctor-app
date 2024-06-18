@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { BiMenu } from "react-icons/bi";
-import { authContext } from "../../../context/AuthContext.jsx";
+import { authContext } from "../../context/authContext.jsx";
 import { useNavigate } from "react-router-dom";
 const Tabs = ({ tab, setTab }) => {
   const { dispatch } = useContext(authContext);
@@ -20,7 +20,7 @@ const Tabs = ({ tab, setTab }) => {
           onClick={() => setTab("overview")}
           className={`${
             tab == "overview"
-              ? "bg-indigo-100 text-primaryColor"
+              ? "bg-[#f9e5e5] text-red-600"
               : "bg-transparent text-headingColor"
           } w-full btn mt-0 rounded-md`}
         >
@@ -31,7 +31,7 @@ const Tabs = ({ tab, setTab }) => {
           onClick={() => setTab("appointments")}
           className={`${
             tab == "appointments"
-              ? "bg-indigo-100 text-primaryColor"
+              ? "bg-[#f9e5e5] text-red-600"
               : "bg-transparent text-headingColor"
           } w-full btn mt-0 rounded-md`}
         >
@@ -42,7 +42,7 @@ const Tabs = ({ tab, setTab }) => {
           onClick={() => setTab("settings")}
           className={`${
             tab == "settings"
-              ? "bg-indigo-100 text-primaryColor"
+              ? "bg-[#f9e5e5] text-red-600"
               : "bg-transparent text-headingColor"
           } w-full btn mt-0 rounded-md`}
         >

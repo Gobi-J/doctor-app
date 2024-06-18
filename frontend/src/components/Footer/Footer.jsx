@@ -79,7 +79,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex justify-between md:flex-row flex-wrap gap-[40px]">
           <div>
-            <img src={logo} />
+            <img src={logo} className="w-[300px]" />
             <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">
               Copyright ©️ {year} developed by Gobi J
             </p>
@@ -89,7 +89,7 @@ const Footer = () => {
                   href={link.path}
                   target="blank"
                   key={index}
-                  className="w-9 h-9 rounded-full flex items-center justify-center group border border-solid border-[#181A1E] transition duration-300 ease-in-out hover:bg-primaryColor hover:border-none"
+                  className="w-9 h-9 rounded-full flex items-center justify-center group border border-solid border-[#181A1E] transition duration-300 ease-in-out hover:bg-red-600 hover:border-none"
                 >
                   {link.icon}
                 </a>

@@ -3,7 +3,7 @@ import MyBookings from "./MyBookings";
 import Profile from "./Profile";
 import useFetchData from "../../hooks/useFetchData";
 import { BASE_URL } from "../../../config";
-import { authContext } from "../../../context/AuthContext";
+import { authContext } from "../../context/authContext";
 import Loader from "../../components/Loader/Loading";
 import Error from "../../components/Error/Error";
 
@@ -72,9 +72,9 @@ const MyAccount = () => {
                   onClick={() => setTab("bookings")}
                   className={` ${
                     tab === "bookings" &&
-                    "bg-primaryColor text-white font-normal"
+                    "bg-red-600 text-white font-normal"
                   } p-2 mr-5 px-5 rounded-md text-headingColor font-semibold text-[16px] 
-                    leading-7 border border-solid border-primaryColor`}
+                    leading-7 border border-solid border-red-600`}
                 >
                   My Booking
                 </button>
@@ -82,9 +82,9 @@ const MyAccount = () => {
                   onClick={() => setTab("settings")}
                   className={`${
                     tab === "settings" &&
-                    "bg-primaryColor text-white font-normal"
+                    "bg-red-600 text-white font-normal"
                   } p-2  px-5 rounded-md text-headingColor font-semibold text-[16px] 
-                    leading-7 border border-solid border-primaryColor`}
+                    leading-7 border border-solid border-red-600`}
                 >
                   Profile Settings
                 </button>
