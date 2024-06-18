@@ -59,7 +59,7 @@ Follow these steps to get the project up and running on your local machine:
 6. **Doctor dashboard**: Doctors can view their appointments and billing status.
 
 ## Demo Link
-[Video](https://drive.google.com/file/d/1C_l2XV1bNBjM0DAeZbLCTvEPcJkUsAai/view?usp=sharing)
+[Video](https://www.linkedin.com/posts/gobi-j_mern-webdevelopment-frontenddevelopment-activity-7208829297308893185-YoBh?utm_source=share&utm_medium=member_desktop)
 
 ## License
 This project is licensed under the MIT License.
